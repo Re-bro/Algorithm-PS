@@ -1,8 +1,8 @@
-##[Educational Round 98](https://codeforces.com/contest/1452)
+## [Educational Round 98](https://codeforces.com/contest/1452)
 
 --------------------
 
-###Problems
+### Problems
 - A. Robot Program
  B. Toy Blocks
 C. Two Brackets
@@ -13,7 +13,7 @@ G. Game On Tree
 
 
 --------------------
-#####Participate with handle 'pjh6792'
+##### Participate with handle 'pjh6792'
 
 - solved 4 Problems
 - Rating change : 1522 → 1577 (+55)
