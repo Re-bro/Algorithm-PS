@@ -4,12 +4,12 @@
 
 ### Problems
 - A. Robot Program
- B. Toy Blocks
-C. Two Brackets
-D. Radio Towers
-E. Two Editorials
-F. Divide Powers
-G. Game On Tree
+- B. Toy Blocks
+- C. Two Brackets
+- D. Radio Towers
+- E. Two Editorials
+- F. Divide Powers
+- G. Game On Tree
 
 
 --------------------
