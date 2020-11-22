@@ -17,3 +17,5 @@
 
 - solved 4 Problems
 - Rating change : 1522 → 1577 (+55)
+
+![20201122_202915](https://user-images.githubusercontent.com/74646936/99902584-32c6b580-2d02-11eb-9e83-fd905afe67fc.png)
