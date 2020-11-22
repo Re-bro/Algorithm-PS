@@ -1,25 +1,29 @@
 # Algorithm PS
-### Algorithm Problem Solving
- - BOJ (Baekjoon Online Judge)
+---------------------------------------
+## Algorithm Problem Solving
+ - #### BOJ (Baekjoon Online Judge)
 	- handle : [pjh6792](https://www.acmicpc.net/user/pjh6792)
+  [![Solved.ac
+프로필](http://mazassumnida.wtf/api/v2/generate_badge?boj=pjh6792)](https://solved.ac/pjh6792)
 
- - Codeforces 
+ - #### Codeforces
 	- handle : [Rebro](https://codeforces.com/profile/Rebro)
-	[![](https://run.kaist.ac.kr/badges/codeforces/Rebro.svg)](https://codeforces.com/profile/Rebro)
+  ![](https://run.kaist.ac.kr/badges/codeforces/Rebro.svg)
 	- handle : [pjh6792](https://codeforces.com/profile/pjh6792)
+		  ![](https://run.kaist.ac.kr/badges/codeforces/pjh6792.svg)
 
- - Atcoder
+
+ - #### Atcoder
 	- handle : [Rebro](https://atcoder.jp/users/Rebro)
-
- - Google competition
+![](https://run.kaist.ac.kr/badges/atcoder/Rebro.svg)
+ - #### Google competition
 	- handle : Rebro
 
- - Programmers
- - etc
+ - #### Programmers
 
+
+------------
 ### Introduction
 - Upload my solution of problems with explanation
 - Sourcecodes are classified by key algorithm
 - Some of them have more detail explanation on my blog
-	
-
