@@ -5,6 +5,7 @@
 
  - Codeforces 
 	- handle : [Rebro](https://codeforces.com/profile/Rebro)
+	[![](https://run.kaist.ac.kr/badges/codeforces/Rebro.svg)](https://codeforces.com/profile/Rebro)
 	- handle : [pjh6792](https://codeforces.com/profile/pjh6792)
 
  - Atcoder
