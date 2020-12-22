@@ -2,7 +2,7 @@
 	Algorithm : Fenwick Tree
 
 	Range update & point query
-	풀이 : https://kimcodingvv.github.io/BOJ-17353/
+	풀이 : https://wogud6792.tistory.com/92
 
 */
 
