@@ -20,8 +20,7 @@ void update(int tr[], int i, int val) {
 }
 //range update & range query
 int a_tr[100001], int b_tr[100001];
-int x;
-void range_update(int l, int r) {
+void range_update(int l, int r, int x) {
 	update(a_tr, l, x); update(a_tr, r + 1, -x); //일차항 계수 update
 	update(b_tr, l, (-l + 1)*x); update(b_tr, r + 1, r*x); //상수항 update
 }
