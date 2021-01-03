@@ -10,17 +10,19 @@
 using namespace std;
 int main(void) {
 	ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
+	//	freopen("input.txt", "r", stdin);
 	int N, K; cin >> N >> K;
 	int cnt = 0;
 	for (int i = 1; i <= N; i++) {
 		string s; cin >> s;
 		if (cnt + sz(s) <= K) {
-			cout << s<<' ';
+			if (cnt == 0) cout << s;
+			else cout << ' ' << s;
 			cnt += sz(s);
 		}
 		else {
 			cout << '\n';
-			cout << s<<' ';
+			cout << s;
 			cnt = sz(s);
 		}
 	}
