@@ -6,7 +6,7 @@
 	R을 구하고 나서, R범위로 묶이는 감염된 소의 그룹의 수를 구하면 된다.
 */
 
-#include<bits/stdc++.h>
+#include<bits/stdc++.h>	
 #define all(v) v.begin(), v.end()
 #define sz(x) (int)x.size()
 #define ini(x, y) memset(x, y, sizeof(x));
