@@ -69,7 +69,7 @@ struct Trie {
 		for (int i = 0; i < s.size(); i++) {
 			int now = s[i] - 'a';
 			while (cur != this && !(cur->ch[now])) cur = cur->fail;
-			if (cur->ch[now]) cur->ch[now];
+			if (cur->ch[now]) cur = cur->ch[now];
 			for (int j = 0; j < cur->output.size(); j++) {
 				ret.push_back({ i+1, cur->output[j]}); 
 			}
