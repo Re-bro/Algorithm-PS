@@ -1,6 +1,9 @@
 /* [BOJ 7579] 앱
 	Algorithm : DP / knapsack
 
+	knapsack dp를 이용하여 각 비용에서 확보할 수 있는 최대의 메모리를 구한다.
+	그리고, M 이상이 되는 최소 비용을 찾는다.
+
 */
 #include<bits/stdc++.h>
 using namespace std;
