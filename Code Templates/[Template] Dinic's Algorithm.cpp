@@ -1,4 +1,4 @@
-/* Dinic's Algorithm
+/* Dinic's Algorithm Template
 
 	Time : O(V^2E)
 */
@@ -55,7 +55,7 @@ int main(void) {
 	while (bfs()) {
 		memset(see, 0, sizeof(see));
 		while (1) {
-			int flow = dfs(S, 1e9);
+			int flow = dfs(S, 2e9);
 			if (!flow) break;
 			res += flow;
 		}
