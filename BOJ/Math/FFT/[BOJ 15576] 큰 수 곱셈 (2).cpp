@@ -1,12 +1,18 @@
-/* FFT algorithm by non-recursion
-	Time Complexity : O(nlogn)
-	Space Complexity : O(n)
-*/
-
 #include<bits/stdc++.h>
 #define all(v) v.begin(), v.end()
-#define sz(v) (int)v.size()
+#define sz(x) (int)x.size()
+#define ini(x, y) memset(x, y, sizeof(x));
+#define pb push_back
+#define fi first
+#define se second
+
 using namespace std;
+using ll = long long;
+using pii = pair<int, int>;
+using pll = pair<ll, ll>;
+const int MOD = (int)1e9 + 7;
+const int MAX = (int)2e9;
+const double PI = acos(-1);
 using cdbl = complex<double>;
 
 void fft(vector<cdbl> &a, bool inv) {
@@ -51,12 +57,25 @@ vector<int> multiply(const vector<int>&a, const vector<int>&b) {
 }
 int main(void) {
 	ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
-	int n, m; cin >> n >> m;
-	vector<int> f(n + 1), g(m + 1);
-	for (int i = 0; i <= n; i++) cin >> f[i];
-	for (int i = 0; i <= m; i++) cin >> g[i];
-	vector<int> mul = multiply(f, g);
-	int ans = 0;
-	for (int i = 0; i < sz(mul); i++) ans ^= mul[i];
-	cout << ans;
+	//	freopen("input.txt", "r", stdin);
+	string a, b; cin >> a >> b;
+	if (a == "0" || b == "0") return cout << 0, 0;
+	vector<int> A, B;
+	for (int i = sz(a) - 1; i >= 0; i--) {
+		A.push_back(a[i] - '0');
+	}
+	for (int i = sz(b) - 1; i >= 0; i--) {
+		B.push_back(b[i] - '0');
+	}
+	vector<int> mul = multiply(A, B);
+	vector<int> ans;
+	int r = 0;
+	for (int i = 0; i < sz(mul); i++) {
+		ans.push_back((r + mul[i]) % 10);
+		r = (r + mul[i]) / 10;
+	}
+	if (r != 0) ans.push_back(r);
+	int idx = sz(ans) - 1;
+	while (ans[idx] == 0) idx--;
+	for (int i = idx; i >= 0; i--) cout << ans[i];
 }

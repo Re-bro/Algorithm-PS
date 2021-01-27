@@ -1,12 +1,18 @@
-/* FFT algorithm by non-recursion
-	Time Complexity : O(nlogn)
-	Space Complexity : O(n)
-*/
-
 #include<bits/stdc++.h>
 #define all(v) v.begin(), v.end()
-#define sz(v) (int)v.size()
+#define sz(x) (int)x.size()
+#define ini(x, y) memset(x, y, sizeof(x));
+#define pb push_back
+#define fi first
+#define se second
+
 using namespace std;
+using ll = long long;
+using pii = pair<int, int>;
+using pll = pair<ll, ll>;
+const int MOD = (int)1e9 + 7;
+const int MAX = (int)2e9;
+const double PI = acos(-1);
 using cdbl = complex<double>;
 
 void fft(vector<cdbl> &a, bool inv) {
@@ -49,14 +55,22 @@ vector<int> multiply(const vector<int>&a, const vector<int>&b) {
 	for (int i = 0; i < n; i++) res[i] = int(fa[i].real() + (fa[i].real() > 0 ? 0.5 : -0.5));
 	return res;
 }
+int prime[1000001];
 int main(void) {
 	ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
-	int n, m; cin >> n >> m;
-	vector<int> f(n + 1), g(m + 1);
-	for (int i = 0; i <= n; i++) cin >> f[i];
-	for (int i = 0; i <= m; i++) cin >> g[i];
-	vector<int> mul = multiply(f, g);
-	int ans = 0;
-	for (int i = 0; i < sz(mul); i++) ans ^= mul[i];
-	cout << ans;
+	//	freopen("input.txt", "r", stdin);
+	vector<int> a(1000001), b(1000001);
+	for (int i = 2; i <= 1000000; i++) {
+		if (prime[i] == 0) {
+			if (i % 2) a[i] = 1;
+			if (2 * i <= 1000000) b[2 * i] = 1;
+			for (int j = 2; j*i <= 1000000; j++) prime[i*j] = 1;
+		}
+	}
+	vector<int> res = multiply(a, b);
+	int T; cin >> T;
+	while (T--) {
+		int n; cin >> n;
+		cout << res[n] << '\n';
+	}
 }

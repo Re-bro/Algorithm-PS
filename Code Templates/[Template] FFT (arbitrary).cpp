@@ -39,7 +39,8 @@ void fft(vector<cdbl> &a, bool inv) {
 }
 vector<ll> multiply(const vector<int>&a, const vector<int>&b, ll mod) {
 	int n = 1;
-	while (n <= max(sz(a), sz(b))) n <<= 1;
+	while (n < max(sz(a), sz(b))) n <<= 1;
+	n <<= 1;
 	int shift = 15, mask = (1 << shift) - 1;
 	vector<cdbl> fa(n, cdbl(0, 0)), fb(n, cdbl(0, 0));
 	for (int i = 0; i < sz(a); i++) fa[i] = cdbl(a[i] >> shift, a[i] & mask);
