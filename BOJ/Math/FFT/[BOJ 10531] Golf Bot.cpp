@@ -1,13 +1,15 @@
-/* FFT algorithm by non-recursion
-	Time Complexity : O(nlogn)
-	Space Complexity : O(n)
+/* [BOJ 10531] Golf Bot
+	Algorithm : FFT
+	
+	전형적인 FFT 문제. 
+	차수가 한번 쳤을 때 가능한 거리인 경우 계수를 1, 아니면 0으로 한 뒤 다항식을 제곱한다. 
+	그리고, 원하는 거리를 d라고 하면, d차항의 계수가 0보다 큰 경우 2번 쳐서 d에 도달할 수 있다.
+	1번 쳐서 도달하는 경우는 처음에 주어진 인풋으로 해결가능하다.
 */
-
 #include<bits/stdc++.h>
 #define all(v) v.begin(), v.end()
-#define sz(v) (int)v.size()
+#define sz(x) (int)x.size()
 using namespace std;
-
 using cdbl = complex<double>;
 void fft(vector<cdbl> &a, bool inv) {
 	int n = sz(a);
@@ -51,12 +53,19 @@ vector<int> multiply(const vector<int>&a, const vector<int>&b) {
 }
 int main(void) {
 	ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
-	int n, m; cin >> n >> m;
-	vector<int> f(n + 1), g(m + 1);
-	for (int i = 0; i <= n; i++) cin >> f[i];
-	for (int i = 0; i <= m; i++) cin >> g[i];
-	vector<int> mul = multiply(f, g);
+	//	freopen("input.txt", "r", stdin);
+	int n; cin >> n;
+	vector<int> v(200001);
+	for (int i = 1; i <= n; i++) {
+		int a; cin >> a;
+		v[a] = 1;
+	}
+	vector<int> res = multiply(v, v);
+	int m; cin >> m;
 	int ans = 0;
-	for (int i = 0; i < sz(mul); i++) ans ^= mul[i];
+	for (int i = 1; i <= m; i++) {
+		int a; cin >> a;
+		if (v[a] || res[a]) ans++;
+	}
 	cout << ans;
 }

@@ -1,14 +1,16 @@
-/* FFT algorithm by non-recursion
-	Time Complexity : O(nlogn)
-	Space Complexity : O(n)
-*/
+/* [BOJ 20176] Needle
+	Algorithm : FFT
 
+	barriers를 순서대로 a,b,c라고 하면, 2b = a+c 를 만족하는 세 점을 찾는 문제이다. 
+	따라서, 두 수를 뽑아 만드는 합의 모든 경우의 수를 구하는 과정이 필요하고, 
+	원소의 개수가 각각 최대 5만이므로 nlogn인 FFT를 이용한다.
+*/
 #include<bits/stdc++.h>
 #define all(v) v.begin(), v.end()
-#define sz(v) (int)v.size()
+#define sz(x) (int)x.size()
 using namespace std;
-
 using cdbl = complex<double>;
+
 void fft(vector<cdbl> &a, bool inv) {
 	int n = sz(a);
 	int j = 0;
@@ -23,7 +25,7 @@ void fft(vector<cdbl> &a, bool inv) {
 	}
 	for (int len = 2; len <= n; len <<= 1) {
 		double ang = 2 * acos(-1) / len * (inv ? -1 : 1);
-		cdbl wlen(cos(ang), sin(ang)); //(wlen)^len= 1
+		cdbl wlen(cos(ang), sin(ang)); 
 		for (int i = 0; i < n; i += len) {
 			cdbl w(1);
 			for (int j = 0; j < len / 2; j++) {
@@ -51,12 +53,27 @@ vector<int> multiply(const vector<int>&a, const vector<int>&b) {
 }
 int main(void) {
 	ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
-	int n, m; cin >> n >> m;
-	vector<int> f(n + 1), g(m + 1);
-	for (int i = 0; i <= n; i++) cin >> f[i];
-	for (int i = 0; i <= m; i++) cin >> g[i];
-	vector<int> mul = multiply(f, g);
+	int u; cin >> u;
+	int val;
+	vector<int>a(60001), b(60001), c(60001);
+	for (int i = 1; i <= u; i++) {
+		cin >> val;
+		a[val + 30000] = 1;
+	}
+	cin >> u;
+	for (int i = 1; i <= u; i++) {
+		cin >> val;
+		b[val + 30000] = 1;
+	}
+	cin >> u;
+	for (int i = 1; i <= u; i++) {
+		cin >> val;
+		c[val + 30000] = 1;
+	}
+	vector<int> res = multiply(a, c);
 	int ans = 0;
-	for (int i = 0; i < sz(mul); i++) ans ^= mul[i];
+	for (int i = 0; i <= 60000; i++) {
+		if (b[i] == 1) ans += res[2 * i];
+	}
 	cout << ans;
 }
