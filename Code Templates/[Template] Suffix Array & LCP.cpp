@@ -10,7 +10,9 @@ bool cmp(int i, int j) {
 	//현재 위치의 문자를 비교
 	if (pos[i] != pos[j]) return pos[i] < pos[j];
 	//문자가 같으면 d칸 뒤의 문자끼리 비교
-	else return pos[i + d] < pos[j + d];
+	i += d;
+	j += d;
+	return (i < N && j < N) ? pos[i] < pos[j] : i > j;
 }
 void getSA() {
 	N = strlen(S);
