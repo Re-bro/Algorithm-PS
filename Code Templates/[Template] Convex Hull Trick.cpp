@@ -57,3 +57,43 @@ int main(void) {
 	}
 	cout << dp[n];
 }
+
+/* [Special Case O(N)] 
+	Since the slope of the lines monotonically increases, 
+	we don't have to find the line's position by binary search. 
+	and all lines are pushed/poped exactly once, so time complexity is O(N) (N : number of lines)
+
+	Based on Problem BOJ 4008 [특공대]
+*/
+
+ll x[1000001];
+ll dp[1000001];
+int n;
+ll a, b, c;
+double isect(int i, int j) {
+	//L[i] : (-2ax[i])x + (ax[i]^2 - bx[i]+dp[i])
+	//L[j] : (-2ax[j])x + (ax[j]^2 - bx[j]+dp[j])
+	ll k = a * (x[j] * x[j] - x[i] * x[i]) - b * (x[j] - x[i]) + dp[j] - dp[i];
+	return k / (2.0 * a * (x[j] - x[i]));
+}
+int main(void) {
+	ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
+	cin >> n >> a >> b >> c;
+	for (int i = 1; i <= n; i++) {
+		cin >> x[i];
+		x[i] += x[i - 1];
+	}
+	deque<int> L;
+	L.push_back(0);
+	for (int i = 1; i <= n; i++) {
+		//현재 선분 후보 들 중 맨 처음 두 선분 L[0]과 L[1]의 교점이 x[i]보다 작으면 L[0]은 버린다.
+		while (L.size() > 1 && isect(L[0], L[1]) < x[i]) L.pop_front();
+		int k = L.front();
+		dp[i] = -2 * a * x[k] * x[i] + a * x[k] * x[k] - b * x[k] + dp[k] + a * x[i] * x[i] + b * x[i] + c;
+		// 현재 선분 후보에 들어 있는 선분 중 맨 끝 선분을 L0, 두 번째 끝 선분을 L1, 새로 추가되는 선분을 Li이라 하면, 
+		// L0, L1의 교점보다 L1, Li의 교점이 앞에 있는 경우, Li가 L0보다 기울기가 더 크므로 L0은 이용할 일이 없으므로 제거한다.
+		while (L.size() > 1 && isect(i, L[L.size() - 2]) < isect(L[L.size() - 2], L.back())) L.pop_back();
+		L.push_back(i);
+	}
+	cout << dp[n];
+}
