@@ -15,8 +15,7 @@ vector<int> kmp(string S, string P) {
 		if (P[i] == P[j]) fail[i] = ++j;
 	}
 	vector<int> res;
-	int j = 0;
-	for (int i = 0; i < n; i++) {
+	for (int i = 0, j = 0; i < n; i++) {
 		while (j > 0 && S[i] != P[j]) j = fail[j - 1];
 		if (S[i] == P[j]) {
 			if (j == m - 1) {
