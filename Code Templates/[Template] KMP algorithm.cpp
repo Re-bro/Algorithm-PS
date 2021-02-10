@@ -28,9 +28,3 @@ vector<int> kmp(string S, string P) {
 	}
 	return res;
 }
-
-int main(void) {
-	ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
-	//	freopen("input.txt", "r", stdin);
-
-}
