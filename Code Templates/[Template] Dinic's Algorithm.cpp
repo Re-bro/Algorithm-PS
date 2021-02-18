@@ -17,8 +17,6 @@ struct Dinic {
 	vector<vector<edge>> adj;
 	vector<int> level, see;
 	Dinic(int n) : n(n) {
-		c.assign(n + 1, vector<int>(n + 1));
-		f.assign(n + 1, vector<int>(n + 1));
 		adj.assign(n + 1, vector<edge>());
 		level.assign(n + 1, -1);
 		see.assign(n + 1, 0);
