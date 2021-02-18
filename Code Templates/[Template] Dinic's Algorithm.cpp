@@ -13,7 +13,6 @@ struct Dinic {
 		edge(int v, int c, int rev) : v(v), c(c), rev(rev) {}
 	};
 	int n;
-	vector<vector<int>> c, f;
 	vector<vector<edge>> adj;
 	vector<int> level, see;
 	Dinic(int n) : n(n) {
