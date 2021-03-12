@@ -7,7 +7,7 @@ ll mpow(ll x, ll y, ll mod) { //x^y (mod)
 	ll res = 1;
 	x %= mod;
 	while (y) {
-		if (y % 2) res = (res*x) % mod;
+		if (y % 2) res = (res*x) % mod; //mod가 10^9 넘는 경우에는 res앞에 (__int128) 넣어주기
 		y /= 2;
 		x = (x*x) % mod;
 	}
@@ -27,13 +27,14 @@ bool miller(ll n, ll a) {
 		k /= 2;
 	}
 }
+bool isprime(ll a) {
+	for (int i = 0; i < miller_base.size(); i++) {
+		if (miller(a, miller_base[i]) == false) return false;
+	}
+	return true;
+}
 int main(void) {
 	ll n; cin >> n;
-	for (int i = 0; i < miller_base.size(); i++) {
-		if (miller(n, miller_base[i]) == false) {
-			cout << "Composite!";
-			return 0;
-		}
-	}
-	cout << "Prime!";
+	if (isprime(n)) cout << "Prime!";
+	else cout << "Composite!";
 }
