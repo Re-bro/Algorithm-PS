@@ -30,12 +30,11 @@ void merge(int a, int b) {
 }
 int main(void) {
 	ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
-	//freopen("input.txt", "r", stdin);
 	int n, m; cin >> n >> m;
-	vector<pair<int, pii>> edge;
+	vector<tuple<int, int, int>> edge;
 	for (int i = 0; i < m; i++) {
 		int a, b, c; cin >> a >> b >> c;
-		edge.pb({ c, {a, b} });
+		edge.pb(make_tuple(c, a, b));
 	}
 	sort(all(edge));
 	int q; cin >> q;
@@ -47,7 +46,6 @@ int main(void) {
 	while (1) {
 		for (int i = 1; i <= m; i++) g[i].clear();
 		bool chk = false;
-		// O(Qlogm)
 		for (int i = 0; i < q; i++) {
 			if (l[i] <= r[i]) {
 				chk = true;
@@ -56,17 +54,18 @@ int main(void) {
 		}
 		if (!chk) break;
 		ini(P, -1);
-		//O(m + Q)
-		for (int i = 1; i <= m; i++) {
-			merge(edge[i - 1].se.fi, edge[i - 1].se.se);
+		int i = 1;
+		for (auto [c, a, b] : edge) {
+			merge(a, b);
 			for (int j : g[i]) {
 				if (find(query[j].fi) == find(query[j].se)) {
-					ans[j].fi = edge[i - 1].fi;
-					ans[j].se = -P[find(query[j].fi)];
+					ans[j].fi = c;
+					ans[j].se = abs(P[find(query[j].fi)]);
 					r[j] = i - 1;
 				}
 				else l[j] = i + 1;
 			}
+			i++;
 		}
 	}
 	for (int i = 0; i < q; i++) {
