@@ -57,3 +57,22 @@ int sum(int x, int y) {
 	}
 	return ans;
 }
+
+// k번째 수 찾기
+void update(int x, int val) {
+	x++;
+	while (x <= MAX) {
+		tr[x] += val;
+		x += (x & -x);
+	}
+}
+int kth(int k) {
+	int res = 0;
+	for (int i = log2(MAX) + 1; i >= 0; i--) {
+		if (res + (1 << i) < MAX && tr[res + (1 << i)] < k) {
+			k -= tr[res + (1 << i)];
+			res += (1 << i);
+		}
+	}
+	return res;
+}
