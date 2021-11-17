@@ -32,7 +32,7 @@ int init(int x, int s, int e) {
 	else return tr[x] = min(init(x * 2, s, (s + e) / 2), init(x * 2 + 1, (s + e) / 2 + 1, e));
 }
 int query(int x, int s, int e, int l, int r) {
-	if (s > l || e < s) return MAX;
+	if (s >r|| e < l) return MAX;
 	else if (s >= l && e <= r) return tr[x];
 	else return min(query(x * 2, s, (s + e) / 2, l, r), query(x * 2 + 1, (s + e) / 2 + 1, e, l, r));
 }
