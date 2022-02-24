@@ -27,3 +27,12 @@ vector<int> kmp(string S, string P) {
 	}
 	return res;
 }
+
+// S = suffix of S and prefix of S
+// sum of all len(S)
+vector<int> ret;
+int k = S.size();
+while (k > 0) {
+	ret.push_back(k);
+	k = fail[k - 1];
+}
